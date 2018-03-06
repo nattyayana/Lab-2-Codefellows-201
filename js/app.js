@@ -78,3 +78,12 @@ while(!correctAnswer){
   var numCatsAnswer = prompt('Does my family have only one cat?').toLowerCase();
   correctAnswer = isCorrectFormat(numCatsAnswer);
 }
+if (numCatsAnswer === 'y') {
+  alert('Wrong, there are five total cats in my immediate family, three in Washington and two in California.');
+}
+else if (nameAnswer === 'n') {
+  alert('Correct, there are five total cats in my immediate family, three in Washington and two in California.');
+}
+else {
+  console.log('How did you get here??? Invalid User Input got past the validation function.');
+}
