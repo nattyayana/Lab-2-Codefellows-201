@@ -63,6 +63,15 @@ while(!correctAnswer){
   var roleplayingAnswer = prompt('Is D&D my favorite roleplaying system?').toLowerCase();
   correctAnswer = isCorrectFormat(roleplayingAnswer);
 }
+if (roleplayingAnswer === 'y') {
+  alert('Wrong, D&D is one of my least favorite roleplaying systems I have actually played.');
+}
+else if (roleplayingAnswer === 'n') {
+  alert('Correct, I dont really like D&D very much.');
+}
+else {
+  console.log('How did you get here??? Invalid User Input got past the validation function.');
+}
 
 correctAnswer = false;
 while(!correctAnswer){
