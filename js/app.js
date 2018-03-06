@@ -3,7 +3,7 @@
 //This function takes in a user Statement and checks to see if it is in the correct format(in this case some variant of yes or no). That statement will have already been converted to lower case.
 function isCorrectFormat(statement){
   var firstChar = statement.charAt(0);
-  if (firstChar === ('y' || 'n')){
+  if (firstChar === ('y') || firstChar === ('n')){
     return true;
   }
   else {
