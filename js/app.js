@@ -18,10 +18,26 @@ while (!correctAnswer){
   correctAnswer = isCorrectFormat(nameAnswer);
 }
 
-var birthAnswer = prompt('Was I born in Washington state?').toLowerCase();
+correctAnswer = false;
+while (!correctAnswer) {
+  var birthAnswer = prompt('Was I born in Washington state?').toLowerCase();
+  correctAnswer = isCorrectFormat(birthAnswer);
+}
 
-var travelAnswer = prompt('Have I travelled internationally?').toLowerCase();
+correctAnswer = false;
+while(!correctAnswer){
+  var travelAnswer = prompt('Have I travelled internationally?').toLowerCase();
+  correctAnswer = isCorrectFormat(travelAnswer);
+}
 
-var roleplayingAnswer = prompt('Is D&D my favorite roleplaying system?').toLowerCase();
+correctAnswer = false;
+while(!correctAnswer){
+  var roleplayingAnswer = prompt('Is D&D my favorite roleplaying system?').toLowerCase();
+  correctAnswer = isCorrectFormat(roleplayingAnswer);
+}
 
-var numCatsAnswer = prompt('Does my family have only one cat?').toLowerCase();
+correctAnswer = false;
+while(!correctAnswer){
+  var numCatsAnswer = prompt('Does my family have only one cat?').toLowerCase();
+  correctAnswer = isCorrectFormat(numCatsAnswer);
+}
