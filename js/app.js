@@ -48,6 +48,15 @@ while(!correctAnswer){
   var travelAnswer = prompt('Have I travelled internationally?').toLowerCase();
   correctAnswer = isCorrectFormat(travelAnswer);
 }
+if (travelAnswer === 'y') {
+  alert('Correct! I have travelled internationally many times');
+}
+else if (nameAnswer === 'n') {
+  alert('Wrong, I have been outside the United States many times');
+}
+else {
+  console.log('How did you get here??? Invalid User Input got past the validation function.');
+}
 
 correctAnswer = false;
 while(!correctAnswer){
