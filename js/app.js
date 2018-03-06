@@ -33,6 +33,15 @@ while (!correctAnswer) {
   var birthAnswer = prompt('Was I born in Washington state?').toLowerCase();
   correctAnswer = isCorrectFormat(birthAnswer);
 }
+if (birthAnswer === 'y') {
+  alert('Wrong, I was born in California.');
+}
+else if (birthAnswer === 'n') {
+  alert('Correct, I was born in California.');
+}
+else {
+  console.log('How did you get here??? Invalid User Input got past the validation function.');
+}
 
 correctAnswer = false;
 while(!correctAnswer){
