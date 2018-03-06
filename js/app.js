@@ -18,6 +18,16 @@ while (!correctAnswer){
   correctAnswer = isCorrectFormat(nameAnswer);
 }
 
+if (nameAnswer === 'y'){
+  alert('Correct! Legally my name is Alexander, but I\'ve literally never been called that... ever');
+}
+else if (nameAnswer === 'n'){
+  alert('Wrong, my name is in fact Alex.');
+}
+else {
+  console.log('How did you get here??? Invalid User Input got past the validation function.');
+}
+
 correctAnswer = false;
 while (!correctAnswer) {
   var birthAnswer = prompt('Was I born in Washington state?').toLowerCase();
