@@ -12,7 +12,7 @@
 //   }
 // }
 
-const numQuestions = 6;
+const numQuestions = 7;
 var correctQuestions = 0;
 
 var correctAnswer = false;
@@ -149,6 +149,28 @@ while(!correctAnswer){
     else {
       console.log('Math has broken. Somehow there is something that is both not equal to a number and not not equal to a number.');
     }
+  }
+}
+
+var countryArray = ['Argentina', 'Australia', 'Canada', 'Italy', 'Sweden', 'Peru', 'United Kingdom'];
+correctAnswer = false;
+while(!correctAnswer){
+  var neverCountry = prompt('Which one of the following countries have I never visited: Argentina, Australia, Canada, Italy, Sweden, Peru, United Kingdom');
+  for (let i = 0; i < countryArray.length; i++){
+    if (neverCountry === countryArray[i]){
+      correctAnswer = true;
+      if (countryArray[i] === 'Sweden'){
+        alert('Correct, I have never been to Sweden');
+        correctQuestions++;
+      }
+      else {
+        alert('Wrong, I have been to ' + countryArray[i] + '.');
+      }
+      break;
+    }
+  }
+  if (correctAnswer === false){
+    alert('That is not a valid answer');
   }
 }
 
