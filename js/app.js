@@ -12,7 +12,7 @@
 //   }
 // }
 
-const numQuestions = 5;
+const numQuestions = 6;
 var correctQuestions = 0;
 
 var correctAnswer = false;
@@ -129,6 +129,29 @@ else if (nameAnswer === 'n') {
 else {
   console.log('How did you get here??? Invalid User Input got past the validation function.');
 }
+
+correctAnswer = false;
+while(!correctAnswer){
+  var numDogsAnswer = parseInt(prompt('How many dogs does my immediate family have?'));
+  if (isNaN(numDogsAnswer)){
+    alert('That is not a possible answer.');
+    correctAnswer = false;
+  }
+  else{
+    correctAnswer = true;
+    if (numDogsAnswer === 0){
+      alert('Correct, my immediate family owns no dogs and hasn\'t owned any dogs for as longs as I have been alive');
+      correctQuestions++;
+    }
+    else if (numDogsAnswer !== 0){
+      alert('Wrong, my immediate family owns no dogs and has never owned a dog while I have been alive.');
+    }
+    else {
+      console.log('Math has broken. Somehow there is something that is both not equal to a number and not not equal to a number.');
+    }
+  }
+}
+
 if (correctQuestions !== numQuestions){
   alert('You got ' + correctQuestions + ' questions out of ' + numQuestions + ' correct.');
 }
