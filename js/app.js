@@ -25,13 +25,27 @@ for (let i = 0; i < questionArray.length; i++){
 
   //check if userAnswer is in the correct format
   if (answerTypeArray[i] === 'text'){
-
+    userAnswer = userAnswer.toLowerCase();
+    if (userAnswer === 'y' || userAnswer === 'n'){
+      correctFormat = true;
+    }
   } 
   else if (answerTypeArray[i] === 'number'){
-
+    userAnswer = parseInt(userAnswer);
+    if (isNaN(userAnswer)){
+      correctFormat = false;
+    }
+    else {
+      correctFormat = true;
+    }
   }
   else if (answerTypeArray[i] === 'country-array'){
-
+    for (let n = 0; n < countryArray.length; n++){
+      if (userAnswer === countryArray[n]){
+        correctFormat = true;
+        break;
+      }
+    }
   }
 
   //check userAnswer if correct format, otherwise reduce i by to compensate for the for loop auto increasing it
@@ -39,6 +53,7 @@ for (let i = 0; i < questionArray.length; i++){
 
   }
   else {
+    alert('That is not a possible answer.');
     i--;
   }
 }
