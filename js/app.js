@@ -50,7 +50,13 @@ for (let i = 0; i < questionArray.length; i++){
 
   //check userAnswer if correct format, otherwise reduce i by to compensate for the for loop auto increasing it
   if (correctFormat){
-
+    if (userAnswer === answerArray[i]){
+      correctQuestions++;
+      alert('Correct! You seem pretty awesome');
+    }
+    else {
+      alert('You are wrong. Maybe try at all next time?');
+    }
   }
   else {
     alert('That is not a possible answer.');
