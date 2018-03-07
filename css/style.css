@@ -1,8 +1,26 @@
+* {
+  font-family: Helvetica;
+  text-align: center;
+}
+
 body{
   background-color: rgb(0, 0, 150);
 }
 
 p {
-  font-family: Helvetica;
   color: white;
+}
+
+section {
+  border: 1px, solid, black;
+}
+
+h1 {
+  font-size: 24px;
+  color: rgb(255, 200, 200);
+  padding: 8px;
+}
+
+li {
+  color: rgb(200, 255, 200);
 }
