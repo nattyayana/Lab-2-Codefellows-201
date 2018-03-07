@@ -5,12 +5,15 @@
 //   var firstChar = statement.charAt(0);
 //   if (firstChar === ('y') || firstChar === ('n')){
 //     return true;
-//   }
+//   }8
 //   else {
 //     alert('That is not a possible answer');
 //     return false;
 //   }
 // }
+
+const numQuestions = 5;
+var correctQuestions = 0;
 
 var correctAnswer = false;
 while (!correctAnswer){
@@ -27,6 +30,7 @@ while (!correctAnswer){
 
 if (nameAnswer === 'y'){
   alert('Correct! Legally my name is Alexander, but I\'ve literally never been called that... ever');
+  correctQuestions++;
 }
 else if (nameAnswer === 'n'){
   alert('Wrong, my name is in fact Alex.');
@@ -52,6 +56,7 @@ if (birthAnswer === 'y') {
 }
 else if (birthAnswer === 'n') {
   alert('Correct, I was born in California.');
+  correctQuestions++;
 }
 else {
   console.log('How did you get here??? Invalid User Input got past the validation function.');
@@ -70,6 +75,7 @@ while(!correctAnswer){
   }}
 if (travelAnswer === 'y') {
   alert('Correct! I have travelled internationally many times');
+  correctQuestions++;
 }
 else if (nameAnswer === 'n') {
   alert('Wrong, I have been outside the United States many times');
@@ -95,6 +101,7 @@ if (roleplayingAnswer === 'y') {
 }
 else if (roleplayingAnswer === 'n') {
   alert('Correct, I dont really like D&D very much.');
+  correctAnswer++;
 }
 else {
   console.log('How did you get here??? Invalid User Input got past the validation function.');
@@ -117,7 +124,17 @@ if (numCatsAnswer === 'y') {
 }
 else if (nameAnswer === 'n') {
   alert('Correct, there are five total cats in my immediate family, three in Washington and two in California.');
+  correctQuestions++;
 }
 else {
   console.log('How did you get here??? Invalid User Input got past the validation function.');
+}
+if (correctQuestions !== numQuestions){
+  alert('You got ' + correctQuestions + ' questions out of ' + numQuestions + ' correct.');
+}
+else if (correctQuestions === numQuestions){
+  alert('You got every question right.');
+}
+else {
+  console.log('There has been a failure in mathematics. The user did not get a number of questions correct equal to the number of questions and also did not get a number of quesitons correct that was not equal to the number of questions.');
 }
