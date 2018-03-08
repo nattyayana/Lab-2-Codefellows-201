@@ -7,11 +7,13 @@ var questionArray = ['Is my name Alex?', 'Was I born in Washington state?', 'Hav
 var answerArray = ['y', 'n', 'y', 'n', 'n', 0, 'Sweden'];
 var answerTypeArray = ['yes/no', 'yes/no', 'yes/no', 'yes/no', 'yes/no', 'number', 'country-array'];
 var correctResponse = ['Yes it is!', 'Correct! I was born in California.', 'Yes, many times.', 'It is actually one of my least favorite.', 'Yes we own five.', 'Correct, we\'ve never owned dogs while I\'ve been alive', 'Correct, but I would like to go there someday.'];
-var wrongResponse = ['Actually it is Alex(Legally it\'s Alexander', 'No, I was born in California', 'Acutally I\'ve been out of the country quite often', 'No, I actually greatly dislike it.', 'We actually own five cats', 'What??? My family has never owned dogs while I\'ve been alive', 'Wrong, I have been there before.'];
+var wrongResponse = ['Actually it is Alex(Legally it\'s Alexander', 'No, I was born in California', 'Acutally I\'ve been out of the country quite often', 'No, I actually greatly dislike it.', 'We actually own five cats', 'No, not that many dogs.', 'Wrong, I have been there before.'];
 
 var countryArray = ['Argentina', 'Australia', 'Canada', 'Italy', 'Sweden', 'Peru', 'United Kingdom'];
-
-for (let i = 0; i < questionArray.length; i++){
+var i = 0;
+var numberCounter = 4;
+var countryCounter = 6;
+while (i < questionArray.length){
   let correctFormat = false;
   var userAnswer = prompt(questionArray[i]);
 
@@ -40,19 +42,30 @@ for (let i = 0; i < questionArray.length; i++){
     }
   }
 
-  //check userAnswer if correct format, otherwise reduce i by to compensate for the for loop auto increasing it
+  //check userAnswer if correct format
   if (correctFormat){
     if (userAnswer === answerArray[i]){
       correctQuestions++;
       alert(correctResponse[i]);
+      i++;
     }
     else {
       alert(wrongResponse[i]);
+      if (answerTypeArray[i] === 'number' && numberCounter > 0){
+        alert('You have ' + numberCounter + ' guesses left.');
+        numberCounter--;
+      }
+      else if (answerTypeArray[i] === 'country-array' && countryCounter > 0){
+        alert('You have ' + countryCounter + ' guesses left.');
+        countryCounter--;
+      }
+      else {
+        i++;
+      }
     }
   }
   else {
     alert('That is not a possible answer.');
-    i--;
   }
 }
 
