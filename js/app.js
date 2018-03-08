@@ -29,7 +29,7 @@ for (let i = 0; i < questionArray.length; i++){
     if (userAnswer === 'y' || userAnswer === 'n'){
       correctFormat = true;
     }
-  } 
+  }
   else if (answerTypeArray[i] === 'number'){
     userAnswer = parseInt(userAnswer);
     if (isNaN(userAnswer)){
