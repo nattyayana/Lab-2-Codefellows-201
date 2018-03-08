@@ -16,7 +16,7 @@ var correctQuestions = 0;
 
 var questionArray = ['Is my name Alex?', 'Was I born in Washington state?', 'Have I travelled internationally?', 'Is D&D my favorite roleplaying system?', 'Does my immediate family have any cats?', 'How many dogs does my immediate family have?', 'Which one of the following countries have I never visited: Argentina, Australia, Canada, Italy, Sweden, Peru, United Kingdom'];
 var answerArray = ['y', 'n', 'y', 'n', 'n', 0, 'Sweden'];
-var answerTypeArray = ['text', 'text', 'text', 'text', 'text', 'number', 'country-array'];
+var answerTypeArray = ['yes/no', 'yes/no', 'yes/no', 'yes/no', 'yes/no', 'number', 'country-array'];
 var countryArray = ['Argentina', 'Australia', 'Canada', 'Italy', 'Sweden', 'Peru', 'United Kingdom'];
 
 for (let i = 0; i < questionArray.length; i++){
@@ -24,7 +24,7 @@ for (let i = 0; i < questionArray.length; i++){
   var userAnswer = prompt(questionArray[i]);
 
   //check if userAnswer is in the correct format
-  if (answerTypeArray[i] === 'text'){
+  if (answerTypeArray[i] === 'yes/no'){
     userAnswer = userAnswer.toLowerCase();
     if (userAnswer === 'y' || userAnswer === 'n'){
       correctFormat = true;
