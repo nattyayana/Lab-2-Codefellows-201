@@ -10,9 +10,12 @@ var correctResponse = ['Yes it is!', 'Correct! I was born in California.', 'Yes,
 var wrongResponse = ['Actually it is Alex(Legally it\'s Alexander', 'No, I was born in California', 'Acutally I\'ve been out of the country quite often', 'No, I actually greatly dislike it.', 'We actually own five cats', 'No, not that many dogs.', 'Wrong, I have been there before.'];
 
 var countryArray = ['Argentina', 'Australia', 'Canada', 'Italy', 'Sweden', 'Peru', 'United Kingdom'];
+
+//this is a set of counters for the loops
 var i = 0;
 var numberCounter = 4;
 var countryCounter = 6;
+
 while (i < questionArray.length){
   let correctFormat = false;
   var userAnswer = prompt(questionArray[i]);
