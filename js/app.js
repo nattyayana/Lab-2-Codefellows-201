@@ -1,17 +1,5 @@
 'use strict';
 
-//This function takes in a user Statement and checks to see if it is in the correct format(in this case some variant of yes or no). That statement will have already been converted to lower case.
-// function isCorrectFormat(statement){
-//   var firstChar = statement.charAt(0);
-//   if (firstChar === ('y') || firstChar === ('n')){
-//     return true;
-//   }8
-//   else {
-//     alert('That is not a possible answer');
-//     return false;
-//   }
-// }
-
 var correctQuestions = 0;
 
 var questionArray = ['Is my name Alex?', 'Was I born in Washington state?', 'Have I travelled internationally?', 'Is D&D my favorite roleplaying system?', 'Does my immediate family have any cats?', 'How many dogs does my immediate family have?', 'Which one of the following countries have I never visited: Argentina, Australia, Canada, Italy, Sweden, Peru, United Kingdom'];
