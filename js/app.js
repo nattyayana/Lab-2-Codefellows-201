@@ -2,9 +2,13 @@
 
 var correctQuestions = 0;
 
+//this is a set of arrays that are related to the questions asked of the user
 var questionArray = ['Is my name Alex?', 'Was I born in Washington state?', 'Have I travelled internationally?', 'Is D&D my favorite roleplaying system?', 'Does my immediate family have any cats?', 'How many dogs does my immediate family have?', 'Which one of the following countries have I never visited: Argentina, Australia, Canada, Italy, Sweden, Peru, United Kingdom'];
 var answerArray = ['y', 'n', 'y', 'n', 'n', 0, 'Sweden'];
 var answerTypeArray = ['yes/no', 'yes/no', 'yes/no', 'yes/no', 'yes/no', 'number', 'country-array'];
+var correctResponse = ['Yes it is!', 'Correct! I was born in California.', 'Yes, many times.', 'It is actually one of my least favorite.', 'Yes we own five.', 'Correct, we\'ve never owned dogs while I\'ve been alive', 'Correct, but I would like to go there someday.'];
+var wrongResponse = ['Actually it is Alex(Legally it\'s Alexander', 'No, I was born in California', 'Acutally I\'ve been out of the country quite often', 'No, I actually greatly dislike it.', 'We actually own five cats', 'What??? My family has never owned dogs while I\'ve been alive', 'Wrong, I have been there before.'];
+
 var countryArray = ['Argentina', 'Australia', 'Canada', 'Italy', 'Sweden', 'Peru', 'United Kingdom'];
 
 for (let i = 0; i < questionArray.length; i++){
@@ -40,10 +44,10 @@ for (let i = 0; i < questionArray.length; i++){
   if (correctFormat){
     if (userAnswer === answerArray[i]){
       correctQuestions++;
-      alert('Correct! You seem pretty awesome');
+      alert(correctResponse[i]);
     }
     else {
-      alert('You are wrong. Maybe try at all next time?');
+      alert(wrongResponse[i]);
     }
   }
   else {
