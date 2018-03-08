@@ -5,7 +5,7 @@ function getUserResponse(question) {
   return userResponse; 
 
 }
-function validateAnswer(answerType, answer, array = null ) {
+function validate(answerType, answer, array = null ) {
   var correctFormat = false;
 
 
@@ -33,95 +33,112 @@ function validateAnswer(answerType, answer, array = null ) {
       }
     }
   }
+  console.log(correctFormat);
   return correctFormat;
 }
-function answer(userAnswer, wrongResponse, correctResponse, answer, correctQuestions,answerType, counter = 0)  {
+function answer(userAnswer, wrongResponse, correctResponse, answer,answerType, counter = 0)  {
   if (userAnswer === answer){
-    correctQuestions++;
+   
     alert(correctResponse);
-    return [true, correctQuestions]; 
+    return true;
   }
   else {
     alert(wrongResponse);
     if (answerType === 'number' && counter > 0){
       alert('You have ' + counter + ' guesses left.');
-      return [false, correctQuestions]; 
+      return false;
     }
     else if (answerType === 'array' && counter > 0){
       alert('You have ' + counter + ' guesses left.');
-      return [false, correctQuestions];
+      return false;
     }
     else {
-      return [true, correctQuestions]; 
+      return false;
     
+    }
+
   }
-
 }
+function questionLoop(){
+  var correctQuestions = 0;
 
 
-var correctQuestions = 0;
+  //this is a set of arrays that are related to the questions asked of the user
+
+  var questionArray = ['Is my name Alex?', 'Was I born in Washington state?', 'Have I travelled internationally?', 'Is D&D my favorite roleplaying system?', 'Does my immediate family have any cats?', 'How many dogs does my immediate family have?', 'Which one of the following countries have I never visited: Argentina, Australia, Canada, Italy, Sweden, Peru, United Kingdom'];
 
 
-//this is a set of arrays that are related to the questions asked of the user
-
-var questionArray = ['Is my name Alex?', 'Was I born in Washington state?', 'Have I travelled internationally?', 'Is D&D my favorite roleplaying system?', 'Does my immediate family have any cats?', 'How many dogs does my immediate family have?', 'Which one of the following countries have I never visited: Argentina, Australia, Canada, Italy, Sweden, Peru, United Kingdom'];
+  var answerArray = ['y', 'n', 'y', 'n', 'n', 0, 'Sweden'];
 
 
-var answerArray = ['y', 'n', 'y', 'n', 'n', 0, 'Sweden'];
+  var answerTypeArray = ['yes/no', 'yes/no', 'yes/no', 'yes/no', 'yes/no', 'number', 'array'];
+  var correctResponse = ['Yes it is!', 'Correct! I was born in California.', 'Yes, many times.', 'It is actually one of my least favorite.', 'Yes we own five.', 'Correct, we\'ve never owned dogs while I\'ve been alive', 'Correct, but I would like to go there someday.'];
+  var wrongResponse = ['Actually it is Alex(Legally it\'s Alexander', 'No, I was born in California', 'Acutally I\'ve been out of the country quite often', 'No, I actually greatly dislike it.', 'We actually own five cats', 'No, not that many dogs.', 'Wrong, I have been there before.'];
+
+  var countryArray = ['Argentina', 'Australia', 'Canada', 'Italy', 'Sweden', 'Peru', 'United Kingdom'];
+
+  //this is a set of counters for the loops
+  var i = 0;
+  var numberCounter = 4;
+  var countryCounter = 6;
 
 
-var answerTypeArray = ['yes/no', 'yes/no', 'yes/no', 'yes/no', 'yes/no', 'number', 'array'];
-var correctResponse = ['Yes it is!', 'Correct! I was born in California.', 'Yes, many times.', 'It is actually one of my least favorite.', 'Yes we own five.', 'Correct, we\'ve never owned dogs while I\'ve been alive', 'Correct, but I would like to go there someday.'];
-var wrongResponse = ['Actually it is Alex(Legally it\'s Alexander', 'No, I was born in California', 'Acutally I\'ve been out of the country quite often', 'No, I actually greatly dislike it.', 'We actually own five cats', 'No, not that many dogs.', 'Wrong, I have been there before.'];
-
-var countryArray = ['Argentina', 'Australia', 'Canada', 'Italy', 'Sweden', 'Peru', 'United Kingdom'];
-
-
-
-
-//this is a set of counters for the loops
-var i = 0;
-var numberCounter = 4;
-var countryCounter = 6;
-
-
-while (i < questionArray.length){
-
-
-  //check userAnswer if correct format
-  if (correctFormat){
-    if (userAnswer === answerArray[i]){
-      correctQuestions++;
-      alert(correctResponse[i]);
-      i++;
+  while (i < questionArray.length){
+    var userResponse = getUserResponse(questionArray[i]);
+    if (answerTypeArray[i] ==='array'){
+      var isValid = validate(answerTypeArray[i], userResponse, countryArray);
     }
     else {
-      alert(wrongResponse[i]);
-      if (answerTypeArray[i] === 'number' && numberCounter > 0){
-        alert('You have ' + numberCounter + ' guesses left.');
-        numberCounter--;
-      }
-      else if (answerTypeArray[i] === 'country-array' && countryCounter > 0){
-        alert('You have ' + countryCounter + ' guesses left.');
-        countryCounter--;
+      var isValid = validate(answerTypeArray[i], userResponse);
+
+    }
+    if (isValid) {
+      if (answerTypeArray[i]==='number') {
+        var correct= answer(userResponse, wrongResponse, correctResponse, answerArray[i], correctQuestions, answerTypeArray[i],numberCounter);
+        if (correct) {  correctQuestions++;i++; }
+
+        else if (numberCounter < 0 && !correct) { i++;}
       }
       else {
-        i++;
+        numberCounter--;
       }
     }
+    else if (answerTypeArray[i]==='array') {
+      var correct= answer(userResponse, wrongResponse, correctResponse, answerArray[i], correctQuestions, answerTypeArray[i], countryCounter);
+      if (correct) {
+        correctQuestions++;
+        i++;
+        
+      }
+      else if (countryCounter < 0 && !correct) {
+        i++;
+      }
+      else {
+        countryCounter--;
+      }
+
+    }
+    else {
+      var correct= answer(userResponse, wrongResponse, correctResponse, answerArray[i], correctQuestions, answerTypeArray[i]); 
+      if (correct) { 
+        correctQuestions++;
+        i++;  
+      }
+      else {i++;}
+    }
+   
   }
+
+
+
+  if (correctQuestions !== questionArray.length){
+    alert('You got ' + correctQuestions + ' questions out of ' + questionArray.length + ' correct.');
+  }
+  else if (correctQuestions === questionArray.length){
+    alert('You got every question right.');
+  }   
   else {
-    alert('That is not a possible answer.');
+    console.log('There has been a failure in mathematics. The user did not get a number of questions correct equal to the number of questions and also did not get a number of quesitons correct that was not equal to the number of questions.');
   }
 }
-
-
-if (correctQuestions !== questionArray.length){
-  alert('You got ' + correctQuestions + ' questions out of ' + questionArray.length + ' correct.');
-}
-else if (correctQuestions === questionArray.length){
-  alert('You got every question right.');
-}
-else {
-  console.log('There has been a failure in mathematics. The user did not get a number of questions correct equal to the number of questions and also did not get a number of quesitons correct that was not equal to the number of questions.');
-}
+questionLoop();
